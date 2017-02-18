@@ -24073,6 +24073,8 @@ module.exports = {
 "use strict";
 
 
+// tag::vars[]
+
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -24084,44 +24086,141 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var React = __webpack_require__(92);
 var ReactDOM = __webpack_require__(91);
 var client = __webpack_require__(90);
+// end::vars[]
 
-var numbers = [1, 2, 3, 4, 5];
-var listItems = numbers.map(function (number) {
-  return React.createElement(
-    'li',
-    null,
-    number
-  );
-});
+// tag::app[]
 
 var App = function (_React$Component) {
-  _inherits(App, _React$Component);
+	_inherits(App, _React$Component);
 
-  function App() {
-    _classCallCheck(this, App);
+	function App(props) {
+		_classCallCheck(this, App);
 
-    return _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).apply(this, arguments));
-  }
+		var _this = _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this, props));
 
-  _createClass(App, null, [{
-    key: 'render',
-    value: function render() {
-      return React.createElement(
-        'h1',
-        null,
-        'React'
-      );
-    }
-  }]);
+		_this.state = { employees: [] };
+		return _this;
+	}
 
-  return App;
+	_createClass(App, [{
+		key: 'componentDidMount',
+		value: function componentDidMount() {
+			var _this2 = this;
+
+			client({ method: 'GET', path: '/shiftyspring-1.0-SNAPSHOT/employees' }).done(function (response) {
+				_this2.setState({ employees: response.entity._embedded.employees });
+			});
+		}
+	}, {
+		key: 'render',
+		value: function render() {
+			return React.createElement(EmployeeList, { employees: this.state.employees });
+		}
+	}]);
+
+	return App;
 }(React.Component);
+// end::app[]
 
-ReactDOM.render(React.createElement(
-  'ul',
-  null,
-  listItems
-), document.getElementById('react'));
+// tag::employee-list[]
+
+
+var EmployeeList = function (_React$Component2) {
+	_inherits(EmployeeList, _React$Component2);
+
+	function EmployeeList() {
+		_classCallCheck(this, EmployeeList);
+
+		return _possibleConstructorReturn(this, (EmployeeList.__proto__ || Object.getPrototypeOf(EmployeeList)).apply(this, arguments));
+	}
+
+	_createClass(EmployeeList, [{
+		key: 'render',
+		value: function render() {
+			var employees = this.props.employees.map(function (employee) {
+				return React.createElement(Employee, { key: employee._links.self.href, employee: employee });
+			});
+			return React.createElement(
+				'table',
+				null,
+				React.createElement(
+					'tbody',
+					null,
+					React.createElement(
+						'tr',
+						null,
+						React.createElement(
+							'th',
+							null,
+							'First Name'
+						),
+						React.createElement(
+							'th',
+							null,
+							'Last Name'
+						),
+						React.createElement(
+							'th',
+							null,
+							'Description'
+						)
+					),
+					employees
+				)
+			);
+		}
+	}]);
+
+	return EmployeeList;
+}(React.Component);
+// end::employee-list[]
+
+// tag::employee[]
+
+
+var Employee = function (_React$Component3) {
+	_inherits(Employee, _React$Component3);
+
+	function Employee() {
+		_classCallCheck(this, Employee);
+
+		return _possibleConstructorReturn(this, (Employee.__proto__ || Object.getPrototypeOf(Employee)).apply(this, arguments));
+	}
+
+	_createClass(Employee, [{
+		key: 'render',
+		value: function render() {
+			return React.createElement(
+				'tr',
+				null,
+				React.createElement(
+					'td',
+					null,
+					this.props.employee.firstName
+				),
+				React.createElement(
+					'td',
+					null,
+					this.props.employee.lastName
+				),
+				React.createElement(
+					'td',
+					null,
+					this.props.employee.description
+				)
+			);
+		}
+	}]);
+
+	return Employee;
+}(React.Component);
+// end::employee[]
+
+// tag::render[]
+
+
+ReactDOM.render(React.createElement(App, null), document.getElementById('react'));
+// end::render[]
 
 /***/ })
 /******/ ]);

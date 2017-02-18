@@ -1,15 +1,20 @@
 package something.employee;
 
 
+import com.sun.jndi.toolkit.url.Uri;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.hateoas.Link;
 import org.springframework.web.bind.annotation.*;
+import something.Application;
 
 
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.List;
 
 import static org.springframework.hateoas.jaxrs.JaxRsLinkBuilder.linkTo;
+import static org.springframework.hateoas.mvc.ControllerLinkBuilder.methodOn;
 import static org.springframework.web.bind.annotation.RequestMethod.*;
 
 /**
@@ -26,8 +31,10 @@ public class EmployeeController {
     public List getEmployees(){
         List<Employee> allEmployees = employeeService.getAllEmployees();
         for(Employee employee : allEmployees){
-            Link selfLink = linkTo(EmployeeController.class).slash(employee.getEmployeeId()).withSelfRel();
-            employee.add(selfLink);
+            long id = employee.getEmployeeId();
+            Link testLink = new Link ("http://localhost:8080/shiftyspring-1.0-SNAPSHOT/employees/" + id);
+
+            employee.add(testLink);
         }
         return allEmployees;
     }
@@ -52,7 +59,20 @@ public class EmployeeController {
 
     @RequestMapping(value = "/{id}", method = GET)
     public Employee getEmployee(@PathVariable long id) {
-        return employeeService.getEmployee(id);
+
+        Employee employee = employeeService.getEmployee(id);
+        //Link selfLink =  linkTo(EmployeeController.class).withSelfRel();
+
+        Link testLink = new Link ("http://localhost:8080/shiftyspring-1.0-SNAPSHOT/employees/" + id);
+        employee.add(testLink);
+
+        Link nextLink = new Link ("http://localhost:8080/shiftyspring-1.0-SNAPSHOT/employees/" + (id+1)).withRel("next");
+        employee.add(nextLink);
+
+        return employee;
+
     }
+
+
 
 }
