@@ -23,5 +23,5 @@ To run an instance of Shifty simply ensure that Docker is installed and from the
 -  [ ]  HATEOS API and domain model (20%) *in progress*
 -  [ ]  Usability of HTML/Javascript frontend (20%)
 -  [ ]  Authentication implementation e.g. [Keycloak](http://www.keycloak.org)(20%)
--  [ x ]  Persistence of data (20%)
+-  [x]  Persistence of data (20%)
 -  [ ]  Completeness of automated tests of the business logic (20%)
