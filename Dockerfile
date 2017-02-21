@@ -1,2 +1,2 @@
-FROM jboss/wildfly
-ADD ./target/shiftyspring-0.0.1-SNAPSHOT.war /opt/jboss/wildfly/standalone/deployments/
+FROM jboss/keycloak-adapter-wildfly
+ADD ./target/shiftyspring.war /opt/jboss/wildfly/standalone/deployments/

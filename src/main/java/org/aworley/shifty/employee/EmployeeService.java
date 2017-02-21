@@ -1,4 +1,4 @@
-package something.employee;
+package org.aworley.shifty.employee;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +24,7 @@ public class EmployeeService {
         return employees;
     }
 
-    public Employee getEmployee(long id) {
+    public Employee getEmployee(Long id) {
         return employeeRepository.findOne(id);
     }
 
@@ -33,11 +33,11 @@ public class EmployeeService {
         employeeRepository.save(employee);
     }
 
-    public void editEmployee(long id, Employee employee) {
+    public void editEmployee(Long id, Employee employee) {
         employeeRepository.save(employee);
     }
 
-    public void removeEmployee(long id) {
+    public void removeEmployee(Long id) {
         employeeRepository.delete(id);
     }
 
