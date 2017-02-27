@@ -6,5 +6,6 @@ services:
 
 before_install:
   - mvn clean package
+  - docker run --privileged
   - docker build --tag=shifty .
   - docker-compose up
