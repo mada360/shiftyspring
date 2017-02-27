@@ -5,6 +5,7 @@ services:
     image: postgres:9.4
     environment:
       - DB_PASS=secretpassword
+
   wildfly:
     environment:
       - KEYCLOAK_USER=adam
