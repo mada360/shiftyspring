@@ -241,12 +241,12 @@ td, th {
     padding: 10px;
 }
 
-#topHeading{
+#topheading{
 
     margin: auto;
-    width: 50%;
+    width: 100%;
     padding: 10px;
-    color: #00d9ff;
+    background-color: #00d9ff;
 
 }
 
