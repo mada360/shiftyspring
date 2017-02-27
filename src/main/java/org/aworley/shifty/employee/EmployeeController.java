@@ -31,7 +31,7 @@ public class EmployeeController {
     public String addEmployee(@RequestBody Employee employee){
         employee.setStartDate(new Date());
         employeeService.addEmployee(employee);
-        return "Employee Added";
+        return "Shift Added";
         //return employee;
     }
 
@@ -39,13 +39,13 @@ public class EmployeeController {
     //@ResponseStatus(HttpStatus.OK)
     public String replaceEmployee(@PathVariable Long id, @RequestBody Employee employee){
         employeeService.editEmployee(id, employee);
-        return "Employee updated";
+        return "Shift updated";
     }
 
     @RequestMapping(value = "/{id}", method = DELETE)
     public String removeEmployee(@PathVariable Long id){
         employeeService.removeEmployee(id);
-        return "Employee deleted";
+        return "Shift deleted";
     }
 
     @RequestMapping(value = "/{id}", method = GET)
