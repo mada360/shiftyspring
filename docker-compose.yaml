@@ -3,8 +3,6 @@ services:
   db:
     restart: always
     image: postgres:9.4
-    ports:
-      - "5432:5432"
     environment:
       - DB_PASS=secretpassword
   wildfly:
