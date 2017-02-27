@@ -10,6 +10,10 @@ To run an instance of Shifty simply ensure that Docker is installed and from the
 
 Once running the shifty api will be accessible though `[](http://localhost:8080/shiftyspring)`.
 
+### Windows
+
+Instructions coming soon
+
 ## To Do
 
 -  [ ]  HATEOS API and domain model (20%)
