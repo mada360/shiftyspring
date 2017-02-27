@@ -1,0 +1,22 @@
+version: '2'
+services:
+  db:
+    restart: always
+    image: postgres:9.4
+    ports:
+      - "5432:5432"
+    environment:
+      - DB_PASS=secretpassword
+  wildfly:
+    environment:
+      - KEYCLOAK_USER=adam
+      - KEYCLOAK_PASSWORD=password
+
+    build: .
+    depends_on:
+      - db
+    restart: always
+    image: shifty
+    ports:
+      - "8080:8080"
+      - "9990:9990"
