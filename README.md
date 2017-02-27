@@ -3,7 +3,7 @@
 Shifty - A shift management API (Now with more springs)
 
 ## About
-
+[![Build Status](https://travis-ci.org/mada360/shiftyspring.svg?branch=master)](https://travis-ci.org/mada360/shiftyspring)
 
 ## Usage
 
