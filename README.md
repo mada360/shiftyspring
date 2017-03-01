@@ -12,7 +12,7 @@ Once running the shifty api will be accessible though `[](http://localhost:8080/
 
 ### Windows
 
-Instructions coming soon
+To run on windows please run the set
 
 ## To Do
 

@@ -25,5 +25,14 @@ public class ShiftController {
         return shiftService.getAllShifts();
     }
 
+    @RequestMapping(method = POST)
+    //@ResponseStatus(HttpStatus.CREATED)
+    //@ResponseBody
+    public Shift addShift(@RequestBody Shift shift){
+        shiftService.addShift(shift);
+
+        return shift;
+        //return employee;
+    }
 
 }

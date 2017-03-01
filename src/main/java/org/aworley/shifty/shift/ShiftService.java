@@ -24,6 +24,9 @@ public class ShiftService {
         return shifts;
     }
 
+    public void addShift(Shift shift) {
+        shiftRepository.save(shift);
+    }
 
 
 }

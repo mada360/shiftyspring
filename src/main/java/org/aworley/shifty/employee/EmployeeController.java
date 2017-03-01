@@ -21,6 +21,7 @@ public class EmployeeController {
     @Autowired
     private EmployeeService employeeService;
 
+    @RequestMapping(method = GET)
     public List getEmployees(){
         return employeeService.getAllEmployees();
     }
