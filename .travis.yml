@@ -5,10 +5,7 @@ services:
   - docker
 
 before_install:
-  - mvn clean package
+  - mvn clean package test
   - docker build --tag=shifty .
-  - docker-compose up
+# - docker-compose up
 
-script:
-  - docker ps | grep shiftyspring_wildfly_1
-  - docker ps | grep shiftyspring_db_1
