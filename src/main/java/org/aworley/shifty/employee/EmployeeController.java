@@ -29,11 +29,13 @@ public class EmployeeController {
     @RequestMapping(method = POST)
     //@ResponseStatus(HttpStatus.CREATED)
     //@ResponseBody
-    public String addEmployee(@RequestBody Employee employee){
-        employee.setStartDate(new Date());
+    public Employee addEmployee(@RequestBody Employee employee){
+        if(employee.getStartDate() == null) {
+            employee.setStartDate(new Date());
+        }
         employeeService.addEmployee(employee);
-        return "Shift Added";
-        //return employee;
+
+        return employee;
     }
 
     @RequestMapping(value = "/{id}", method = PUT)

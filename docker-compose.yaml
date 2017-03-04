@@ -15,7 +15,7 @@ services:
     depends_on:
       - db
     restart: always
-    image: shifty
+    image: shiftyspring
     ports:
       - "8080:8080"
       - "9990:9990"

@@ -29,4 +29,7 @@ public class ShiftService {
     }
 
 
+    public String getShift(){
+        return "This";
+    }
 }

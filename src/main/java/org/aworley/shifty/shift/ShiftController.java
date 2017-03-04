@@ -21,18 +21,21 @@ public class ShiftController {
     @Autowired
     private ShiftService shiftService;
 
-    public List getShifts(){
-        return shiftService.getAllShifts();
+    //public List getShifts(){
+     //   return shiftService.getAllShifts();
+    //}
+
+    @RequestMapping(method = GET)
+    public String getShift(){
+        //shiftService.addShift(shift);
+
+        return "shift";
     }
 
     @RequestMapping(method = POST)
-    //@ResponseStatus(HttpStatus.CREATED)
-    //@ResponseBody
-    public Shift addShift(@RequestBody Shift shift){
+    public String addShift(@RequestBody Shift shift){
         shiftService.addShift(shift);
-
-        return shift;
-        //return employee;
+        return "Added shift";
     }
 
 }

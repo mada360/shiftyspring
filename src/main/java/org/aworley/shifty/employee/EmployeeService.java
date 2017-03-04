@@ -29,7 +29,7 @@ public class EmployeeService {
     }
 
     public void addEmployee(Employee employee) {
-        employee.setStartDate(new Date());
+
         employeeRepository.save(employee);
     }
 
