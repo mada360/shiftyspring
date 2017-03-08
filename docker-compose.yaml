@@ -5,6 +5,8 @@ services:
     image: postgres:9.4
     environment:
       - DB_PASS=secretpassword
+    ports:
+        - "5433:5432"  
 
   wildfly:
     environment:
@@ -15,7 +17,6 @@ services:
     depends_on:
       - db
     restart: always
-    image: shiftyspring
     ports:
       - "8080:8080"
       - "9990:9990"

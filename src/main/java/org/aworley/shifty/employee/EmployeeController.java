@@ -1,8 +1,11 @@
 package org.aworley.shifty.employee;
 
+import org.aworley.shifty.shift.Shift;
 import org.springframework.beans.factory.annotation.Autowired;
 
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
@@ -15,20 +18,23 @@ import static org.springframework.web.bind.annotation.RequestMethod.*;
  * Created by adam on 16/02/17.
  */
 @RestController
-@RequestMapping("/employees")
 public class EmployeeController {
 
-    @Autowired
-    private EmployeeService employeeService;
+    private final EmployeeService employeeService;
 
-    @RequestMapping(method = GET)
+    @Autowired
+    public EmployeeController(EmployeeService employeeService) {
+        this.employeeService = employeeService;
+    }
+
+
+    @RequestMapping("/api/employees")
     public List getEmployees(){
         return employeeService.getAllEmployees();
     }
 
-    @RequestMapping(method = POST)
-    //@ResponseStatus(HttpStatus.CREATED)
-    //@ResponseBody
+    @RequestMapping(value = "/employees", method = POST)
+    @ResponseStatus(HttpStatus.CREATED)
     public Employee addEmployee(@RequestBody Employee employee){
         if(employee.getStartDate() == null) {
             employee.setStartDate(new Date());
@@ -38,26 +44,30 @@ public class EmployeeController {
         return employee;
     }
 
-    @RequestMapping(value = "/{id}", method = PUT)
-    //@ResponseStatus(HttpStatus.OK)
+    @RequestMapping(value = "/employees/{id}", method = PUT)
+    @ResponseStatus(HttpStatus.OK)
     public String replaceEmployee(@PathVariable Long id, @RequestBody Employee employee){
         employeeService.editEmployee(id, employee);
         return "Shift updated";
     }
 
-    @RequestMapping(value = "/{id}", method = DELETE)
+    @RequestMapping(value = "/employees/{id}", method = DELETE)
     public String removeEmployee(@PathVariable Long id){
         employeeService.removeEmployee(id);
-        return "Shift deleted";
+        return "Employee deleted";
     }
 
-    @RequestMapping(value = "/{id}", method = GET)
+
+    @RequestMapping(value = "/employees/{id}", method = GET)
     public Employee getEmployee(@PathVariable Long id) {
         return employeeService.getEmployee(id);
     }
 
 
-
+    @RequestMapping(value = "/api/employees/{id}/shifts", method = PUT  )
+    public String addShift(@RequestBody Shift shift){
+       return "Bum";
+    }
 
 
 }

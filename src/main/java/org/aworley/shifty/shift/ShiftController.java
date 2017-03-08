@@ -18,8 +18,12 @@ import static org.springframework.web.bind.annotation.RequestMethod.*;
 @RequestMapping("/shifts")
 public class ShiftController {
 
+    private final ShiftService shiftService;
+
     @Autowired
-    private ShiftService shiftService;
+    public ShiftController(ShiftService shiftService) {
+        this.shiftService = shiftService;
+    }
 
     //public List getShifts(){
      //   return shiftService.getAllShifts();

@@ -1,5 +1,6 @@
 package org.aworley.shifty.shift;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 import org.aworley.shifty.employee.Employee;
@@ -19,11 +20,15 @@ import java.util.Set;
 @NoArgsConstructor
 public class Shift extends ResourceSupport{
 
+    private enum DAY {Monday, Tuesday, Wednesday, Thursday, Friday };
+    private enum TIME {Morning, Afternoon, Evening};
+
     private @Id @GeneratedValue  Long shiftId;
-    @NonNull private String day;
-    @NonNull private String time;
+    @NonNull private DAY shiftDay;
+    @NonNull private TIME shiftTime;
 
     @ManyToMany(mappedBy = "shifts")
+    //@JsonBackReference
     private Set<Employee> employees;
 
     private @Version

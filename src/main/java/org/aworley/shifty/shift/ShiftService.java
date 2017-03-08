@@ -14,8 +14,12 @@ import java.util.List;
 @Service
 public class ShiftService {
 
+    private final ShiftRepository shiftRepository;
+
     @Autowired
-    private ShiftRepository shiftRepository;
+    public ShiftService(ShiftRepository shiftRepository) {
+        this.shiftRepository = shiftRepository;
+    }
 
 
     public List<Shift> getAllShifts() {

@@ -1,6 +1,7 @@
 package org.aworley.shifty.employee;
 
 
+import org.aworley.shifty.shift.Shift;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,32 +15,38 @@ import java.util.List;
 @Service
 public class EmployeeService {
 
+    private final EmployeeRepository employeeRepository;
+
     @Autowired
-    private EmployeeRepository employeeRepository;
+    public EmployeeService(EmployeeRepository employeeRepository) {
+        this.employeeRepository = employeeRepository;
+    }
 
 
-    public List<Employee> getAllEmployees() {
+    List<Employee> getAllEmployees() {
         List<Employee> employees = new ArrayList<>();
         employeeRepository.findAll().forEach(employees::add);
         return employees;
     }
 
-    public Employee getEmployee(Long id) {
+    Employee getEmployee(Long id) {
         return employeeRepository.findOne(id);
     }
 
-    public void addEmployee(Employee employee) {
+    void addEmployee(Employee employee) {
 
         employeeRepository.save(employee);
     }
 
-    public void editEmployee(Long id, Employee employee) {
+    void editEmployee(Long id, Employee employee) {
         employeeRepository.save(employee);
     }
 
-    public void removeEmployee(Long id) {
+    void removeEmployee(Long id) {
         employeeRepository.delete(id);
     }
 
-
+    Shift addShift(Shift shift){
+        return shift;
+    }
 }
