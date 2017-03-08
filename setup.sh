@@ -1,7 +1,23 @@
-#!/bin/bash
+#!/bin/sh
 
 mvn clean package
 
-docker build --tag=shiftyspring .
+case "$(uname -s)" in
 
-docker-compose up
+   Darwin)
+       sudo docker-compose build && docker-compose up
+     ;;
+
+   Linux)
+       sudo docker-compose build && docker-compose up
+     ;;
+
+   CYGWIN*|MINGW32*|MSYS*)
+       docker-compose build && docker-compose up
+     ;;
+
+
+   *)
+     echo 'other OS - please run docker commands manually' 
+     ;;
+esac
