@@ -7,6 +7,7 @@ import org.aworley.shifty.employee.Employee;
 import org.springframework.hateoas.ResourceSupport;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Set;
 
 /**
@@ -29,9 +30,8 @@ public class Shift extends ResourceSupport{
 
     @ManyToMany(mappedBy = "shifts")
     //@JsonBackReference
-    private Set<Employee> employees;
+    private Set<Employee> employees = new HashSet<>();
 
-    private @Version
-    @JsonIgnore  Long version;
+    private @Version  @JsonIgnore  Long version;
 
 }

@@ -1,6 +1,5 @@
 package org.aworley.shifty.employee;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
@@ -10,18 +9,18 @@ import org.springframework.hateoas.ResourceSupport;
 import javax.persistence.*;
 
 import java.util.Date;
+import java.util.HashSet;
 import java.util.Set;
 
 /**
  * Created by adam on 16/02/17.
  */
 
-@EqualsAndHashCode(callSuper = true)
 @Data
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
-public class Employee extends ResourceSupport{
+public class Employee {
 
     private @Id @GeneratedValue  Long employeeId;
     @NonNull private String firstName;
@@ -29,10 +28,9 @@ public class Employee extends ResourceSupport{
     @NonNull private Date startDate;
 
     @ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable(name = "shifts")
-    private Set<Shift> shifts;
+    @JoinTable(name = "employee_shifts")
+    private Set<Shift> shifts = new HashSet<>();
 
-    private @Version
-    @JsonIgnore  Long version;
+    @Version @JsonIgnore private Long version;
 
 }

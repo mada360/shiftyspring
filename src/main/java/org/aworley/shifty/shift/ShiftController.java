@@ -15,7 +15,7 @@ import static org.springframework.web.bind.annotation.RequestMethod.*;
  * Created by adam on 16/02/17.
  */
 @RestController
-@RequestMapping("/shifts")
+@RequestMapping("api/shifts")
 public class ShiftController {
 
     private final ShiftService shiftService;
@@ -25,21 +25,6 @@ public class ShiftController {
         this.shiftService = shiftService;
     }
 
-    //public List getShifts(){
-     //   return shiftService.getAllShifts();
-    //}
 
-    @RequestMapping(method = GET)
-    public String getShift(){
-        //shiftService.addShift(shift);
-
-        return "shift";
-    }
-
-    @RequestMapping(method = POST)
-    public String addShift(@RequestBody Shift shift){
-        shiftService.addShift(shift);
-        return "Added shift";
-    }
 
 }

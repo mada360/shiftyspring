@@ -12,10 +12,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
 @Controller
-@RequestMapping(value = "/teapot")
+@RequestMapping(value = "/api/teapot")
 public class TeapotController {
 
-
+    @RequestMapping(method = RequestMethod.GET)
     @ResponseStatus(HttpStatus.I_AM_A_TEAPOT)
     @ResponseBody
     public String teapot(){
