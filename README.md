@@ -9,6 +9,8 @@
 
 To run an instance of Shifty simply ensure that Docker is installed and from the root directory (the one with the Dockerfile) use the following command `./setup.sh`. Docker requires sudo privileges and will request the sudo password.
 
+The setup process may take some time, feel free to grab a coffee, you earned it!
+
 Once running the shifty api will be accessible though [localhost:8080/shiftyspring/api](http://localhost:8080/shiftyspring/api).
 
 ### Windows
@@ -27,6 +29,10 @@ PS C:\git\shiftyspring> docker-compose up
 
 -  [x]  HATEOS API and domain model (20%)
 -  [x]  Usability of HTML/Javascript front-end (20%)
--  [ ]  Authentication implementation e.g. [Keycloak](http://www.keycloak.org)(20%)
+-  [ ]  Authentication implementation e.g. [Keycloak](http://www.keycloak.org)(10%)
+-  [x]  API Limiting and policies using [APIman]() (10%)
 -  [x]  Persistence of data (20%)
 -  [ ]  Completeness of automated tests of the business logic (20%)
+-  [x]  Automation of deployment: Bash script
+
+ Current completion 70% 

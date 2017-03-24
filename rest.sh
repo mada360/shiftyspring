@@ -12,6 +12,10 @@ GET='curl -X GET '
 # Add keycloak plugin
 ${POST} -H "Authorization: Basic YWRtaW46YWRtaW4xMjMh" -H "Accept:application/json" -H "Content-Type:application/json" http://localhost:8080/apiman/plugins -d '{"name":"Keycloak OAuth Policy Plugin", "artifactId":"apiman-plugins-keycloak-oauth-policy", "description":"This plugin offers an OAuth2 policy which leverages the Keycloak authentication platform as the identity and access provider.", "version":"1.2.9.Final", "groupId":"io.apiman.plugins"}'
 
+
+# TODO Configure Keycloak
+
+
 # Create shifty organisation
 ${POST} -H "Authorization: Basic YWRtaW46YWRtaW4xMjMh" -H "Accept:application/json" -H "Content-Type:application/json" http://localhost:8080/apiman/organizations -d '{"name":" shifty", "description":"shifty org"}'
 
@@ -46,7 +50,3 @@ ${POST} -H "Authorization: Basic YWRtaW46YWRtaW4xMjMh" -H "Accept:application/js
 
 # Register client
 ${POST} -H "Authorization: Basic YWRtaW46YWRtaW4xMjMh" -H "Accept:application/json" -H "Content-Type:application/json" http://localhost:8080/apiman/actions -d '{"type":"registerClient","entityId":"RestClient","entityVersion":"1.0","organizationId":"shifty"}'
-
-
-
-# TODO Configure Keycloak

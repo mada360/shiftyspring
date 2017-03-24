@@ -36,4 +36,5 @@ public class EmployeeService {
         Set<Shift> set = employee.getShifts();
         return new ArrayList<Shift>(set);
     }
+
 }
