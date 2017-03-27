@@ -32,8 +32,8 @@ public class Dbloader implements CommandLineRunner{
 
 
         this.employeeRepository.save(new Employee(null, "Adam", "Worley", date, null, null));
-        this.employeeRepository.save(new Employee(null, "Lauren", "Leagas", date, null, null));
-        this.employeeRepository.save(new Employee(null, "Richard", "Hankins", date, null, null));
-        this.employeeRepository.save(new Employee(null, "Richard", "Goodman", date, null, null));
+        this.employeeRepository.save(new Employee(null, "Jubal", "Harshaw", date, null, null));
+        this.employeeRepository.save(new Employee(null, "Guy", "Montag", date, null, null));
+        this.employeeRepository.save(new Employee(null, "John", "McClaine", date, null, null));
     }
 }
