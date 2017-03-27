@@ -11,11 +11,13 @@ To run an instance of Shifty simply ensure that Docker is installed and from the
 
 The setup process may take some time, feel free to grab a coffee, you earned it!
 
-Once running the shifty api will be accessible though [localhost:8080/shiftyspring/api](http://localhost:8080/shiftyspring/api).
+Once running the shifty api will be directly accessed through [localhost:8080/shiftyspring/api](http://localhost:8080/shiftyspring/api).
 
 ### Windows
 
 To run on windows please consider using [cygwin](https://www.cygwin.com), [babun](https://babun.github.io) or similar command line environment and run the setup.sh script; unlike in Linux or OSX there is no need to provide sudo permissions.
+
+The supplied setup batch file will setup the Docker containers and serve APIman and the shifty service, though the rest will require manual configuration.
 
 Alternatively the commands can be run manually in the command line or powershell as shown below:
 
@@ -30,9 +32,9 @@ PS C:\git\shiftyspring> docker-compose up
 -  [x]  HATEOS API and domain model (20%)
 -  [x]  Usability of HTML/Javascript front-end (20%)
 -  [ ]  Authentication implementation e.g. [Keycloak](http://www.keycloak.org)(10%)
--  [x]  API Limiting and policies using [APIman]() (10%)
+-  [x]  API Limiting and policies using [APIman](http://www.apiman.io/latest/) (10%)
 -  [x]  Persistence of data (20%)
--  [ ]  Completeness of automated tests of the business logic (20%)
+-  [x]  Completeness of automated tests of the business logic (20%) Rest tests have been provided using [postman](https://www.getpostman.com)
 -  [x]  Automation of deployment: Bash script
 
- Current completion 70% 
+ Current completion 90% 
